@@ -1,0 +1,12 @@
+[site]
+name = "skolahub-kelas-free"
+compatibility_date = "2026-03-21"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "skolahub-registrations"
+# database_id will be added after creating D1 database
+
+[vars]
+PROJECT_NAME = "Skolahub Kelas Free"
+VERSION = "1.0.0"

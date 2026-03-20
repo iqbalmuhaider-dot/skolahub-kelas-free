@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas Free AI & Automation - Skolahub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --secondary: #10B981;
+            --accent: #F59E0B;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* What You'll Learn */
+        .what-learn {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .learn-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .learn-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .learn-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .learn-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .learn-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .learn-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .learn-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Projects Showcase */
+        .projects {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .projects .section-title {
+            color: white;
+        }
+
+        .projects-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .project-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .project-card a:hover {
+            color: white;
+        }
+
+        .project-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        /* Registration Form */
+        .registration {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .form-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: #D1FAE5;
+            border: 2px solid var(--secondary);
+            border-radius: 15px;
+        }
+
+        .success-message h3 {
+            color: var(--secondary);
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .success-message p {
+            color: var(--dark);
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .footer .copyright {
+            margin-top: 20px;
+            opacity: 0.6;
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="logo">SKOLAHUB</div>
+            <p class="tagline">Hub Digitalisasi Pendidikan</p>
+            <h1>Kelas Free AI & Automation</h1>
+            <p class="subtitle">Kuasai Google Gemini, Apps Script & Google Sheets untuk automasi kerja harian anda</p>
+            <div class="cta-badge">🎓 PERCUMA 100% - Terhad!</div>
+        </div>
+    </div>
+
+    <!-- What You'll Learn -->
+    <div class="what-learn">
+        <h2 class="section-title">Apa Yang Anda Akan Belajar?</h2>
+        <div class="learn-grid">
+            <div class="learn-card">
+                <h3>🤖 Google Gemini AI</h3>
+                <ul>
+                    <li>Pengenalan kepada AI generatif</li>
+                    <li>Prompt engineering asas</li>
+                    <li>Integrasi Gemini dengan Google Workspace</li>
+                    <li>Buat chatbot sendiri</li>
+                    <li>Auto-generate content dengan AI</li>
+                </ul>
+            </div>
+            <div class="learn-card">
+                <h3>📜 Google Apps Script</h3>
+                <ul>
+                    <li>Asas JavaScript untuk automation</li>
+                    <li>Auto-email & notifications</li>
+                    <li>Custom functions dalam Sheets</li>
+                    <li>Web app deployment</li>
+                    <li>API integration</li>
+                </ul>
+            </div>
+            <div class="learn-card">
+                <h3>📊 Google Sheets Advanced</h3>
+                <ul>
+                    <li>Advanced formulas & queries</li>
+                    <li>Data visualization</li>
+                    <li>Database management</li>
+                    <li>Real-time collaboration</li>
+                    <li>Dashboard creation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Showcase -->
+    <div class="projects">
+        <h2 class="section-title">Projek Yang Dah Dibina</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon">📖</div>
+                <h3>CelikJawi 1</h3>
+                <p>Platform pembelajaran Jawi digital</p>
+                <a href="https://celikjawi1.skolahub.com" target="_blank">Layari →</a>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">📚</div>
+                <h3>CelikJawi 2</h3>
+                <p>Sistem latihan & kuiz Jawi</p>
+                <a href="https://celikjawi2.skolahub.com" target="_blank">Layari →</a>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">✍️</div>
+                <h3>CelikJawi 3</h3>
+                <p>Penulisan Jawi interaktif</p>
+                <a href="https://celikjawi3.skolahub.com" target="_blank">Layari →</a>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">🔍</div>
+                <h3>Imbasan</h3>
+                <p>Sistem imbasan & dokumentasi digital</p>
+                <a href="https://imbasan.skolahub.com" target="_blank">Layari →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="registration">
+        <h2 class="section-title">Daftar Sekarang!</h2>
+        <div class="form-container">
+            <h3 class="form-title">🎓 Borang Pendaftaran</h3>
+            <p class="form-subtitle">Isi maklumat di bawah untuk mendaftar kelas free ini</p>
+
+            <form id="registrationForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Nama Penuh *</label>
+                    <input type="text" name="nama" required placeholder="Cth: Ahmad bin Abdullah">
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required placeholder="Cth: ahmad@gmail.com">
+                </div>
+
+                <div class="form-group">
+                    <label>No. Telefon *</label>
+                    <input type="tel" name="telefon" required placeholder="Cth: 012-3456789" pattern="[0-9\-\s]+">
+                </div>
+
+                <div class="form-group">
+                    <label>Jawatan *</label>
+                    <input type="text" name="jawatan" required placeholder="Cth: Guru, Pensyarah, Pelajar">
+                </div>
+
+                <div class="form-group">
+                    <label>Institusi/Syarikat</label>
+                    <input type="text" name="institusi" placeholder="Cth: SK Masjid Tanah">
+                </div>
+
+                <div class="form-group">
+                    <label>Tahap Kemahiran *</label>
+                    <select name="tahap" required>
+                        <option value="">-- Sila Pilih --</option>
+                        <option value="pemula">Pemula (Tak pernah coding)</option>
+                        <option value="pertengahan">Pertengahan (Ada asas)</option>
+                        <option value="mahir">Mahir (Nak advance lagi)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Kenapa Nak Join Kelas Ini? *</label>
+                    <textarea name="tujuan" required placeholder="Ceritakan kenapa anda berminat dengan kelas ini..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Projek Apa Yang Nak Bina? *</label>
+                    <textarea name="projek" required placeholder="Contoh: Auto-email system, Student tracker, dll..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">🚀 Hantar Pendaftaran</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <h3>✅ Pendaftaran Berjaya!</h3>
+                <p>Terima kasih kerana berminat dengan kelas free ini!</p>
+                <p style="margin-top: 15px;">Kami akan hubungi anda melalui email/telefon dalam masa 2-3 hari bekerja.</p>
+                <p style="margin-top: 10px; font-weight: 600;">📧 Sila check email anda untuk confirmation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-logo">SKOLAHUB</div>
+        <p>Hub Digitalisasi Pendidikan</p>
+        <p style="margin-top: 15px;">📧 contact@skolahub.com</p>
+        <p class="copyright">© 2026 Skolahub. All rights reserved.</p>
+    </div>
+
+    <script>
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Get form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Add timestamp
+            data.timestamp = new Date().toISOString();
+            data.status = 'pending';
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Menghantar...';
+            
+            try {
+                // Send to backend (will be connected to Google Sheets/D1)
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Show success message
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Optional: Send to Google Sheets via webhook
+                    // await fetch('YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL', {
+                    //     method: 'POST',
+                    //     mode: 'no-cors',
+                    //     headers: {'Content-Type': 'application/json'},
+                    //     body: JSON.stringify(data)
+                    // });
+                    
+                    console.log('✅ Registration successful:', data);
+                } else {
+                    throw new Error(result.error || 'Registration failed');
+                }
+            } catch (error) {
+                console.error('❌ Error:', error);
+                alert('Maaf, berlaku ralat. Sila cuba lagi atau hubungi kami di contact@skolahub.com');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚀 Hantar Pendaftaran';
+            }
+        }
+    </script>
+</body>
+</html>
