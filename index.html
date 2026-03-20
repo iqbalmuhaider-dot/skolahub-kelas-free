@@ -90,6 +90,44 @@
             font-weight: 400;
         }
 
+        /* Registration Counter */
+        .counter-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .counter-label {
+            font-size: 1em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .counter-number {
+            font-size: 3.5em;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .counter-ticker {
+            animation: ticker 0.3s ease;
+        }
+
+        @keyframes ticker {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         .cta-badge {
             display: inline-block;
             background: var(--accent);
@@ -394,6 +432,12 @@
             <h1>Kelas Free Bina Permainan Interaktif</h1>
             <p class="subtitle">Belajar asas bina permainan interaktif, simpan database Google Sheets & publish kepada umum - PERCUMA!</p>
             <div class="cta-badge">🎓 PERCUMA 100% - Terhad!</div>
+            
+            <!-- Registration Counter -->
+            <div class="counter-box">
+                <div class="counter-label">🎯 Sudah Daftar</div>
+                <div class="counter-number" id="registrationCounter">0</div>
+            </div>
         </div>
     </div>
 
@@ -541,6 +585,44 @@
     </div>
 
     <script>
+        // Registration Counter - Fetch from API
+        let currentCount = 0;
+        
+        async function fetchRegistrationCount() {
+            try {
+                const response = await fetch('/api/count');
+                const result = await response.json();
+                if (result.success && result.count !== undefined) {
+                    updateCounter(result.count);
+                }
+            } catch (error) {
+                console.error('Error fetching count:', error);
+                // Fallback: try to get from localStorage
+                const saved = localStorage.getItem('registrationCount');
+                if (saved) {
+                    updateCounter(parseInt(saved));
+                }
+            }
+        }
+        
+        function updateCounter(newCount) {
+            const counterEl = document.getElementById('registrationCounter');
+            if (newCount > currentCount) {
+                // Animate the increase
+                counterEl.classList.add('counter-ticker');
+                setTimeout(() => counterEl.classList.remove('counter-ticker'), 300);
+            }
+            currentCount = newCount;
+            counterEl.textContent = currentCount;
+            localStorage.setItem('registrationCount', currentCount);
+        }
+        
+        // Fetch count on page load
+        fetchRegistrationCount();
+        
+        // Refresh count every 30 seconds
+        setInterval(fetchRegistrationCount, 30000);
+        
         async function handleSubmit(event) {
             event.preventDefault();
             
@@ -576,6 +658,9 @@
                     // Show success message
                     form.style.display = 'none';
                     successMessage.style.display = 'block';
+                    
+                    // Update counter
+                    updateCounter(currentCount + 1);
                     
                     // Optional: Send to Google Sheets via webhook
                     // await fetch('YOUR_GOOGLE_APPS_SCRIPT_WEBHOOK_URL', {

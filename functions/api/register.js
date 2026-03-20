@@ -43,6 +43,12 @@ export async function onRequestPost(context) {
       ).run();
     }
     
+    // Increment counter in KV storage (if configured)
+    if (env.KV) {
+      const currentCount = parseInt(await env.KV.get('registration_count') || '0');
+      await env.KV.put('registration_count', (currentCount + 1).toString());
+    }
+    
     // Also send to Google Sheets via webhook (optional - uncomment when configured)
     // if (env.GOOGLE_SHEETS_WEBHOOK) {
     //   await fetch(env.GOOGLE_SHEETS_WEBHOOK, {
