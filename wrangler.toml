@@ -11,3 +11,7 @@ database_id = "8f486806-2fef-49c4-93df-9ce5fe8d6271"
 PROJECT_NAME = "Skolahub Kelas Free"
 VERSION = "1.0.0"
 GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/YOUR_WEBHOOK_ID/exec"
+TELEGRAM_CHAT_ID = "348712133"
+
+# TELEGRAM_BOT_TOKEN must be set as secret (not in this file):
+# wrangler secret put TELEGRAM_BOT_TOKEN

@@ -65,6 +65,38 @@ export async function onRequestPost(context) {
       }
     }
     
+    // Send Telegram notification to Boss
+    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+      try {
+        const message = `🎓 *Pendaftaran Baru!*
+
+📋 *Maklumat:*
+• Nama: ${data.nama}
+• Email: ${data.email}
+• Telefon: ${data.telefon}
+• Jawatan: ${data.jawatan}
+• Institusi: ${data.institusi || '-'}
+• Tahap: ${data.tahap}
+• Projek: ${data.projek}
+
+⏰ ${new Date(data.timestamp).toLocaleString('ms-MY')}`;
+
+        await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            chat_id: env.TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: 'Markdown'
+          })
+        });
+        console.log('✅ Telegram notification sent');
+      } catch (tgError) {
+        console.error('⚠️ Telegram notification failed:', tgError);
+        // Don't fail registration if Telegram fails
+      }
+    }
+    
     // Send confirmation email (optional - implement with Cloudflare Email or external service)
     // await sendConfirmationEmail(data.email, data.nama);
     
