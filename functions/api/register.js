@@ -5,7 +5,7 @@ export async function onRequestPost(context) {
     const data = await request.json();
     
     // Validate required fields
-    const requiredFields = ['nama', 'email', 'telefon', 'jawatan', 'tahap', 'tujuan', 'projek'];
+    const requiredFields = ['nama', 'email', 'telefon', 'jawatan', 'tahap', 'projek'];
     for (const field of requiredFields) {
       if (!data[field]) {
         return Response.json({ 
@@ -27,8 +27,8 @@ export async function onRequestPost(context) {
     // Save to D1 Database (if configured)
     if (env.DB) {
       await env.DB.prepare(`
-        INSERT INTO registrations (nama, email, telefon, jawatan, institusi, tahap, tujuan, projek, timestamp, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO registrations (nama, email, telefon, jawatan, institusi, tahap, projek, timestamp, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
       `).bind(
         data.nama,
         data.email,
@@ -36,7 +36,6 @@ export async function onRequestPost(context) {
         data.jawatan,
         data.institusi || null,
         data.tahap,
-        data.tujuan,
         data.projek,
         data.timestamp,
         data.status
@@ -79,7 +78,9 @@ export async function onRequestPost(context) {
 • Tahap: ${data.tahap}
 • Projek: ${data.projek}
 
-⏰ ${new Date(data.timestamp).toLocaleString('ms-MY')}`;
+⏰ ${new Date(data.timestamp).toLocaleString('ms-MY')}
+
+📢 User akan join Telegram channel untuk update.`;
 
         await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
           method: 'POST',
