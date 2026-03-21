@@ -49,15 +49,21 @@ export async function onRequestPost(context) {
       await env.KV.put('registration_count', (currentCount + 1).toString());
     }
     
-    // Also send to Google Sheets via webhook (optional - uncomment when configured)
-    // if (env.GOOGLE_SHEETS_WEBHOOK) {
-    //   await fetch(env.GOOGLE_SHEETS_WEBHOOK, {
-    //     method: 'POST',
-    //     mode: 'no-cors',
-    //     headers: {'Content-Type': 'application/json'},
-    //     body: JSON.stringify(data)
-    //   });
-    // }
+    // Backup to Google Sheets via webhook
+    if (env.GOOGLE_SHEETS_WEBHOOK && env.GOOGLE_SHEETS_WEBHOOK !== "https://script.google.com/macros/s/YOUR_WEBHOOK_ID/exec") {
+      try {
+        await fetch(env.GOOGLE_SHEETS_WEBHOOK, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        });
+        console.log('✅ Backup to Google Sheets successful');
+      } catch (sheetError) {
+        console.error('⚠️ Google Sheets backup failed:', sheetError);
+        // Don't fail registration if Sheets backup fails
+      }
+    }
     
     // Send confirmation email (optional - implement with Cloudflare Email or external service)
     // await sendConfirmationEmail(data.email, data.nama);
