@@ -1,4 +1,6 @@
 // Google Apps Script Webhook untuk Skolahub Kelas Free
+// Setup Guide: https://github.com/iqbalmuhaider-dot/skolahub-kelas-free/blob/main/APPS-SCRIPT-SETUP.md
+// 
 // Cara setup:
 // 1. Buka https://script.google.com
 // 2. Create new project
@@ -7,6 +9,7 @@
 // 5. Execute as: Me
 // 6. Who has access: Anyone
 // 7. Copy webhook URL
+// 8. Update wrangler.toml dengan webhook URL
 
 function doPost(e) {
   try {
@@ -23,7 +26,6 @@ function doPost(e) {
         'Jawatan',
         'Institusi',
         'Tahap',
-        'Tujuan',
         'Projek',
         'Timestamp',
         'Status',
@@ -31,7 +33,7 @@ function doPost(e) {
       ]);
       
       // Style header row
-      const headerRange = sheet.getRange(1, 1, 1, 12);
+      const headerRange = sheet.getRange(1, 1, 1, 11);
       headerRange.setBackground('#4F46E5');
       headerRange.setFontColor('#FFFFFF');
       headerRange.setFontWeight('bold');
@@ -51,7 +53,6 @@ function doPost(e) {
       data.jawatan,
       data.institusi || '-',
       data.tahap,
-      data.tujuan,
       data.projek,
       data.timestamp,
       data.status || 'pending',
@@ -60,11 +61,11 @@ function doPost(e) {
     
     // Format new row
     const lastRow = sheet.getLastRow();
-    const dataRange = sheet.getRange(lastRow, 1, 1, 12);
+    const dataRange = sheet.getRange(lastRow, 1, 1, 11);
     dataRange.setHorizontalAlignment('left');
     
     // Auto-resize columns
-    sheet.autoResizeColumns(1, 12);
+    sheet.autoResizeColumns(1, 11);
     
     // Send email notification (optional)
     sendNotificationEmail(data, id);
