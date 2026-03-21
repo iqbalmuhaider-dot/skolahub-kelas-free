@@ -1,6 +1,6 @@
 name = "skolahub-kelas-free"
 compatibility_date = "2026-03-21"
-workers_dev = true
+pages_build_output_dir = "."
 
 [[d1_databases]]
 binding = "DB"
@@ -12,9 +12,3 @@ PROJECT_NAME = "Skolahub Kelas Free"
 VERSION = "1.0.0"
 GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/YOUR_WEBHOOK_ID/exec"
 TELEGRAM_CHAT_ID = "348712133"
-
-# Secrets (set via Cloudflare Dashboard):
-# Go to: Workers & Pages → skolahub-kelas-free → Settings → Variables → Environment Variables
-# Add these secrets:
-# - TELEGRAM_BOT_TOKEN: Bot token dari @BotFather
-# - RESEND_API_KEY: re_cERbggoZ_Az7YZovzVUzTPZQMUKRWybyf (sudah ada)
