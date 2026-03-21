@@ -87,7 +87,7 @@ function doPost(e) {
 
 function sendNotificationEmail(data, id) {
   try {
-    const adminEmail = 'contact@skolahub.com'; // Tukar dengan email Boss
+    const adminEmail = 'skolahub1@gmail.com'; // Email Boss
     
     const subject = `🎓 Pendaftaran Baru: ${data.nama} (${id})`;
     

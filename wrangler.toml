@@ -13,5 +13,6 @@ VERSION = "1.0.0"
 GOOGLE_SHEETS_WEBHOOK = "https://script.google.com/macros/s/YOUR_WEBHOOK_ID/exec"
 TELEGRAM_CHAT_ID = "348712133"
 
-# TELEGRAM_BOT_TOKEN must be set as secret (not in this file):
-# wrangler secret put TELEGRAM_BOT_TOKEN
+# Secrets (set via wrangler secret put):
+# - TELEGRAM_BOT_TOKEN: Bot token dari @BotFather
+# - RESEND_API_KEY: API key dari https://resend.com (untuk email confirmation)
