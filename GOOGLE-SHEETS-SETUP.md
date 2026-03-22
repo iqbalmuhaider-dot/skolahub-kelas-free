@@ -14,7 +14,7 @@
 
 1. Buka https://sheets.google.com
 2. Create new spreadsheet
-3. Nama: **"Skolahub Kelas Free - Registrations"**
+3. Nama: **"Skolahub Kelas Permula Percuma Webapp - Registrations"**
 
 ### Step 2: Create Google Apps Script
 

@@ -1,4 +1,4 @@
-// Google Apps Script Webhook untuk Skolahub Kelas Free
+// Google Apps Script Webhook untuk Skolahub Kelas Permula Percuma Webapp
 // Setup Guide: https://github.com/iqbalmuhaider-dot/skolahub-kelas-free/blob/main/APPS-SCRIPT-SETUP.md
 // 
 // Cara setup:
@@ -93,7 +93,7 @@ function sendNotificationEmail(data, id) {
     const subject = `🎓 Pendaftaran Baru: ${data.nama} (${id})`;
     
     const htmlBody = `
-      <h2 style="color: #4F46E5;">Pendaftaran Kelas Free - Skolahub</h2>
+      <h2 style="color: #4F46E5;">Pendaftaran Kelas Permula Percuma Webapp - Skolahub</h2>
       
       <div style="background: #F3F4F6; padding: 20px; border-radius: 10px; margin: 20px 0;">
         <h3>Maklumat Peserta:</h3>

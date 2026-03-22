@@ -7,7 +7,7 @@
 1. Buka https://sheets.google.com
 2. Login dengan Google Boss (iqbalmuhaider@gmail.com)
 3. Click **+ Blank** atau **+ Kosong**
-4. Nama sheet: **`Skolahub Kelas Free - Registrations`**
+4. Nama sheet: **`Skolahub Kelas Permula Percuma Webapp - Registrations`**
 
 ---
 
@@ -40,7 +40,7 @@
 3. Click gear icon ⚙️ (Select type)
 4. Pilih **Web app**
 5. Fill in:
-   - **Description:** `Skolahub Kelas Free Registration`
+   - **Description:** `Skolahub Kelas Permula Percuma Webapp Registration`
    - **Execute as:** `Me (iqbalmuhaider@gmail.com)`
    - **Who has access:** `Anyone` ← **IMPORTANT!**
 6. Click **Deploy**

@@ -1,4 +1,4 @@
-# 🎓 Skolahub Kelas Free - Registration System
+# 🎓 Skolahub Kelas Permula Percuma Webapp - Registration System
 
 **Hub Digitalisasi Pendidikan**  
 Kelas Free: Google Gemini + Apps Script + Google Sheets
@@ -52,7 +52,7 @@ git config user.name "Amin"
 
 # 3. Commit
 git add -A
-git commit -m "Initial commit - Skolahub Kelas Free registration"
+git commit -m "Initial commit - Skolahub Kelas Permula Percuma Webapp registration"
 
 # 4. Create GitHub repo
 # Pergi https://github.com/new
@@ -214,7 +214,7 @@ await fetch('https://api.resend.com/emails', {
   body: JSON.stringify({
     from: 'Skolahub <onboarding@skolahub.com>',
     to: [data.email],
-    subject: 'Pendaftaran Kelas Free - Confirmation',
+    subject: 'Pendaftaran Kelas Permula Percuma Webapp - Confirmation',
     html: `
       <h1>Terima Kasih ${data.nama}!</h1>
       <p>Pendaftaran anda telah diterima.</p>

@@ -33,7 +33,7 @@ User akan dapat confirmation email dengan:
 1. Login ke Resend dashboard
 2. Klik **API Keys** di sidebar
 3. Click **Create API Key**
-4. Nama: `Skolahub Kelas Free`
+4. Nama: `Skolahub Kelas Permula Percuma Webapp`
 5. Copy API Key (akan jadi macam: `re_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
 
 ### Step 3: Set Secret di Cloudflare

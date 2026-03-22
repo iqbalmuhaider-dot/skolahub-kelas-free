@@ -1,4 +1,4 @@
--- D1 Database Schema for Skolahub Kelas Free Registrations
+-- D1 Database Schema for Skolahub Kelas Permula Percuma Webapp Registrations
 
 CREATE TABLE IF NOT EXISTS registrations (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
